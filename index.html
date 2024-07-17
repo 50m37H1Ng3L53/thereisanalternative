@@ -6,72 +6,118 @@
     <title>Anonymous Answer Form</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         .container {
-    display: flex;
-    max-width: 1200px;
-    margin: 20px auto;
-    
-}
-.form-container {
-    flex-basis: 30%; /* Change to 30% of the total width */
-    padding: 20px;
-    box-sizing: border-box;
-    border-right: 1px solid #ccc;
-}
-
-#answersList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Space between answer boxes */
-    max-width: 100%; 
-    justify-content: center
-}
-.answers-header {
-    text-align: center;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.answers-container {
-    flex-basis: 70%; /* Change to 70% of the total width */
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    padding: 20px;
-    box-sizing: border-box;
-    flex-direction: column;
-    align-items: center;
-}
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 100%;
+            margin: 20px auto;
+        }
+        .form-container, .answers-container {
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .form-container {
+            flex-basis: 30%;
+        }
+        .answers-container {
+            flex-basis: 70%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #answersList {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 100%;
+            justify-content: center;
+        }
         .answer-box {
-            background-color: #f9f9f9;
+            background-color: white;
             padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            height: 100px; /* Fixed height */
-            flex: 1 1 calc(50% - 20px); /* Adjust to fit 4 in a row, considering gaps */
-            overflow: auto; /* Enable scrolling if content overflows */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            margin: 5px;
+            border: 1px dashed black;
+            border-radius: 10px;
+            height: 300px;
+            flex: 1 1 calc(33% - 30px);
+            overflow: auto;
+            box-sizing: border-box;
+        }
+        #answer {
+            border: 1px dashed black;
+            border-radius: 10px;
+            height: 150px;
+            background-color: yellow;
+        }
+        #answerForm {
+            margin-bottom: 30px;
+        }
+        .answers-header {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
 
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1024px) {
+            .form-container, .answers-container {
+                flex-basis: 100%;
+            }
+            .answer-box {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+        @media (max-width: 768px) {
+            .form-container, .answers-container {
+                flex-basis: 100%;
+            }
+            .answer-box {
+                flex: 1 1 calc(100% - 40px);
+            }
+            #answer {
+                height: 100px;
+            }
+            #answersList {
+                padding: 0 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .form-container, .answers-container {
+                flex-basis: 100%;
+            }
+            .answer-box {
+                flex: 1 1 calc(100% - 40px);
+            }
+            #answer {
+                height: 80px;
+            }
+            #answersList {
+                padding: 0 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">  
-    <div class="form-container">
-        <h2>Submit Your Answer</h2>
-        <form id="answerForm">
-            <label for="answer">Your Answer:</label><br>
-            <textarea id="answer" name="answer" rows="4" cols="50"></textarea><br><br>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+        <div class="form-container">
+            <h2>Submit Your Answer</h2>
+            <form id="answerForm">
+                <label for="answer">Your Answer:</label><br><br>
+                <textarea id="answer" name="answer" rows="4" cols="50"></textarea><br><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
 
-    <div class="answers-container">
-        <h2 class="answers-header">All Answers</h2>
-        <div id="answersList"></div>
-    </div>
+        <div class="answers-container">
+            <h2 class="answers-header">All Answers</h2>
+            <div id="answersList"></div>
+        </div>
     </div>
 
     <script>
