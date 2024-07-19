@@ -8,22 +8,23 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             font-size: 16px;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
         }
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 100%;
-            margin: 20px auto;
-        }
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; /* Full width for the container */
+    margin: 20px auto; /* Center the container horizontally */
+    box-sizing: border-box; /* Include padding in the total width */
+}
+
         .form-container, .answers-container {
             padding: 20px;
             box-sizing: border-box;
         }
         .form-container {
             flex-basis: 30%;
+                position: relative; /* Added to provide context for fixed positioning */
+
         }
         .answers-container {
             flex-basis: 70%;
@@ -50,11 +51,12 @@
             box-sizing: border-box;
         }
         #answer {
-            border: 1px dashed black;
-            border-radius: 10px;
-            height: 150px;
-            background-color: yellow;
-        }
+    border: 1px dashed black;
+    border-radius: 10px;
+    background-color: yellow;
+    width: 100%; /* Ensure the textarea is full width */
+    box-sizing: border-box; /* Include padding and border in the width */
+}
         #answerForm {
             margin-bottom: 30px;
         }
@@ -65,6 +67,8 @@
         }
 
         /* Media Queries for Responsiveness */
+        
+        
         @media (max-width: 1024px) {
             .form-container, .answers-container {
                 flex-basis: 100%;
@@ -73,18 +77,25 @@
                 flex: 1 1 calc(50% - 20px);
             }
         }
+
+        @media (min-width: 1025px) {
+    #answerForm {
+        position: fixed; /* Added to fix the form to the bottom */
+        bottom: 0;       /* Position the form at the bottom */
+        width: calc(30% - 40px); /* Adjust width to fit within the container, accounting for padding */
+    }
+}
+
         @media (max-width: 768px) {
             .form-container, .answers-container {
                 flex-basis: 100%;
             }
             .answer-box {
-                flex: 1 1 calc(100% - 40px);
+                flex: 1 1 calc(100% - 20px);
             }
             #answer {
                 height: 100px;
-            }
-            #answersList {
-                padding: 0 20px;
+                flex: 1 1 calc(100% - 20px);
             }
         }
         @media (max-width: 480px) {
@@ -92,13 +103,11 @@
                 flex-basis: 100%;
             }
             .answer-box {
-                flex: 1 1 calc(100% - 40px);
+                flex: 1 1 calc(100% - 10px);
             }
             #answer {
                 height: 80px;
-            }
-            #answersList {
-                padding: 0 20px;
+                flex: (100% - 20px);
             }
         }
     </style>
@@ -139,7 +148,7 @@
             });
             document.getElementById('answer').value = '';
         });
-
+    
         function loadAnswers() {
             fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
                 .then(response => response.json())
@@ -152,10 +161,24 @@
                         answerBox.textContent = answer;
                         answersList.appendChild(answerBox);
                     });
+                    updateAnswerHeight(); // Update the height of #answer after loading answers
                 });
         }
-
+    
+        function updateAnswerHeight() {
+            var answerBoxes = document.querySelectorAll('.answer-box');
+            var maxHeight = 0;
+            answerBoxes.forEach(function(box) {
+                if (box.offsetHeight > maxHeight) {
+                    maxHeight = box.offsetHeight;
+                }
+            });
+            document.getElementById('answer').style.height = maxHeight + 'px';
+        }
+    
+        window.addEventListener('resize', updateAnswerHeight); // Adjust height on window resize
         loadAnswers(); // Initial load
     </script>
+    
 </body>
 </html>
