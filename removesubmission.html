@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request to remove submission</title>
+    <title>Request to remove your submission</title>
    <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
@@ -75,7 +75,7 @@
     }
 
     #answer {
-        background-color: yellow;
+        background-color: lightblue;
         
         
     }
@@ -156,14 +156,11 @@
 <body>
     <div class="container">  
         <div class="form-container">
-            <h2 style="color: yellow;" id="content-header">There is an alternative</h2>
+            <h2 style="color: lightblue;" id="content-header">Remove submission</h2>
             <div id="content">
                 <div id="descriptionForm"><div id="description">
-                    There is an alternative is a digital safe space for people to express their frustration with the current state of the world and the economy we live in through stories from their workplace. Be it a server job at a restaurant, corporate (junior) position, office clerk, artist, factory worker - a lot of us have stories that reflect outdated corporate structures, bad internal communication, nonsense hierarchies, crazy bosses, managers, coworkers, clients, customers, etcetera. How do these experiences reflect on our daily lives, decisions, experience, health?
-                    <br> <br>The idea started from own experience and those shared by friends, mostly working in HORECA (Hotels, Restaurants, Cafes). It was born from desire, driven by frustration, aiming to start a dialogue, and, hopefully, enforce some long overdue changes. As opposed to Thatcher’s gaslighting TINA (There is no alternative), claiming that there is no other viable system than capitalism, TIA offers a space that encourages alternatives and doesn’t dismiss them as naive or foolish. To think of an alternative that benefits most (decent life above poverty line) as naive - isn’t it an act performed by those who don’t benefit from these changes? Or those who can’t afford to even begin to believe life can get better? How does one drop their privilege if it benefits their living standard? How does one question the system that holds its foot on their neck? To think that the necessary societal changes that directly affect our ways of living are naïve, dismiss them as impossible, and carry on living in current reality, is just another act of participation in the capitalist charades.
-                    <br> <br>Please, feel free to vent, and to share your story in the form below. Feel free to be hopeful for a minute. Share what happened, share what you think, share what could be different. You answer is completely anonymous. The answers are recorded through the form, which are then displayed as separate stories. We do not collect any of your data, we have no interest in it, and this platform is a communal property.
-                    <br> <br>If you would like to remove your story, request it through this form, indicating which story is yours (you can find your story within the feed and copy paste it in the email). This form is also completely anonymous, the only input we get is the email body. You do not need to enter a name or an email address.
-                    <br> <br>Hopefully this project will play a tiny part in a big change, and will not be a stagnating swamp of blood boiling experiences (but that is also fine). May we unite in our struggle against the MAN, and may we refuse what’s not ours to carry. Let’s not accept a life we don’t deserve.<br> <br>
+                    On this page you can request to remove your submission through this form. Just paste the text of your answer into this form and hit the "Submit" button. On the right (or below on smaller screens) you can browse submissions to find yours. This form is completely anonymous as well, we just get the body of the email in the inbox, none of your personal data is collected - we do not have any interest in it.
+                    <br> <br> We use EmailJS ???
                 </div>
                 </div>
                 <form id="answerForm">
@@ -178,7 +175,30 @@
             <div id="answersList"></div>
         </div>
     </div>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("smTNsjClG68R6tQw3"); // Replace with your User ID from EmailJS
+        })();
+    </script>
 
+    <script type="text/javascript">
+        document.getElementById('answerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get the form data
+            var message = document.getElementById('answer').value;
+
+            // Send the email
+            emailjs.send("service_hux72yb", "template_t3lrwqg", {
+                message: message
+            }).then(function(response) {
+                alert("Message sent successfully!");
+            }, function(error) {
+                alert("Failed to send message. Please try again.");
+            });
+        });
+    </script>
     <script>
    
 
