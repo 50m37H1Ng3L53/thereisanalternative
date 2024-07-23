@@ -3,128 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anonymous Answer Form</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 16px;
-        }
-        .container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%; /* Full width for the container */
-    margin: 20px auto; /* Center the container horizontally */
-    box-sizing: border-box; /* Include padding in the total width */
-}
+    <title>There is an alternative</title>
+   <style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+    }
 
-        .form-container, .answers-container {
-            padding: 20px;
-            box-sizing: border-box;
-        }
+    h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 20px auto;
+        box-sizing: border-box;
+    }
+
+    .form-container, .answers-container {
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .form-container {
+        flex-basis: 30%;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .answers-container {
+        flex-basis: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #answersList, #content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    .answer-box {
+        background-color: white;
+        padding: 10px;
+        margin: 5px;
+        border: 1px dashed black;
+        border-radius: 10px;
+        height: 300px;
+        flex: 1 1 calc(33% - 30px);
+        overflow: auto;
+        box-sizing: border-box;
+    }
+
+    #description, #answer {
+        border: 1px dashed black;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 5px;
+        box-sizing: border-box;
+        overflow: auto;
+        flex: auto;
+        
+    }
+
+    #answer {
+        background-color: yellow;
+        
+        
+    }
+
+    #description {
+        background-color: white;
+    }
+
+    #descriptionForm, #answerForm {
+        width: fit-content;
+    }
+
+
+    /* Media Queries for Responsiveness */
+    @media (min-width: 1025px) {
         .form-container {
-            flex-basis: 30%;
-                position: relative; /* Added to provide context for fixed positioning */
+            border-right: 1px dashed black;
+        }
+        #answer, #description {
+            height: 300px;
+            
+            width: calc(100% - 10px);
+        }
+    }
 
-        }
-        .answers-container {
-            flex-basis: 70%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        #answersList {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            max-width: 100%;
-            justify-content: center;
+    @media (max-width: 1024px) {
+        .form-container, .answers-container {
+            flex-basis: 100%;
         }
         .answer-box {
-            background-color: white;
-            padding: 10px;
-            margin: 5px;
-            border: 1px dashed black;
-            border-radius: 10px;
-            height: 300px;
-            flex: 1 1 calc(33% - 30px);
-            overflow: auto;
-            box-sizing: border-box;
+            flex: 1 1 calc(50% - 20px);
         }
-        #answer {
-    border: 1px dashed black;
-    border-radius: 10px;
-    background-color: yellow;
-    width: 100%; /* Ensure the textarea is full width */
-    box-sizing: border-box; /* Include padding and border in the width */
-}
-        #answerForm {
-            margin-bottom: 30px;
-        }
-        .answers-header {
-            text-align: center;
+        #answerForm, #descriptionForm {
             width: 100%;
-            margin-bottom: 20px;
+            flex: 1 1 calc(50% - 20px);
         }
 
-        /* Media Queries for Responsiveness */
-        
-        
-        @media (max-width: 1024px) {
-            .form-container, .answers-container {
-                flex-basis: 100%;
-            }
-            .answer-box {
-                flex: 1 1 calc(50% - 20px);
-            }
+        #answer {
+            box-sizing: border-box;
+            width: calc(100% - 10px)
+            
         }
-
-        @media (min-width: 1025px) {
-    #answerForm {
-        position: fixed; /* Added to fix the form to the bottom */
-        bottom: 0;       /* Position the form at the bottom */
-        width: calc(30% - 40px); /* Adjust width to fit within the container, accounting for padding */
+        
     }
-}
 
-        @media (max-width: 768px) {
-            .form-container, .answers-container {
-                flex-basis: 100%;
-            }
-            .answer-box {
-                flex: 1 1 calc(100% - 20px);
-            }
-            #answer {
-                height: 100px;
-                flex: 1 1 calc(100% - 20px);
-            }
+    @media (max-width: 768px) {
+        .form-container, .answers-container {
+            flex-basis: 100%;
         }
-        @media (max-width: 480px) {
-            .form-container, .answers-container {
-                flex-basis: 100%;
-            }
-            .answer-box {
-                flex: 1 1 calc(100% - 10px);
-            }
-            #answer {
-                height: 80px;
-                flex: (100% - 20px);
-            }
+        .answer-box {
+            flex: 1 1 calc(100% - 20px);
         }
-    </style>
+        #answerForm, #descriptionForm {
+            width: auto;
+            flex: 1 1 calc(100% - 20px);
+        }
+   
+    }
+
+    @media (max-width: 480px) {
+        .form-container, .answers-container {
+            flex-basis: 100%;
+        }
+        .answer-box {
+            flex: 1 1 calc(100% - 10px);
+        }
+
+        #answerForm, #descriptionForm {
+            width: auto;
+            flex: 1 1 calc(100% - 10px);
+        }
+
+     
+    }
+</style>
+
 </head>
 <body>
     <div class="container">  
         <div class="form-container">
-            <h2>Submit Your Answer</h2>
-            <form id="answerForm">
-                <label for="answer">Your Answer:</label><br><br>
-                <textarea id="answer" name="answer" rows="4" cols="50"></textarea><br><br>
-                <button type="submit">Submit</button>
-            </form>
+            <h2 style="color: yellow;" id="content-header">There is an alternative</h2>
+            <div id="content">
+                <div id="descriptionForm"><div id="description">
+                    There is an alternative is a digital safe space for people to express their frustration with the current state of the world and the economy we live in through stories from their workplace. Be it a server job at a restaurant, corporate (junior) position, office clerk, artist, factory worker - a lot of us have stories that reflect outdated corporate structures, bad internal communication, nonsense hierarchies, crazy bosses, managers, coworkers, clients, customers, etcetera. How do these experiences reflect on our daily lives, decisions, experience, health?
+                    <br> <br>The idea started from own experience and those shared by friends, mostly working in HORECA (Hotels, Restaurants, Cafes). It was born from desire, driven by frustration, aiming to start a dialogue, and, hopefully, enforce some long overdue changes. As opposed to Thatcher’s gaslighting TINA (There is no alternative), claiming that there is no other viable system than capitalism, TIA offers a space that encourages alternatives and doesn’t dismiss them as naive or foolish. To think of an alternative that benefits most (decent life above poverty line) as naive - isn’t it an act performed by those who don’t benefit from these changes? Or those who can’t afford to even begin to believe life can get better? How does one drop their privilege if it benefits their living standard? How does one question the system that holds its foot on their neck? To think that the necessary societal changes that directly affect our ways of living are naïve, dismiss them as impossible, and carry on living in current reality, is just another act of participation in the capitalist charades.
+                    <br> <br>Please, feel free to vent, and to share your story in the form below. Feel free to be hopeful for a minute. Share what happened, share what you think, share what could be different. You answer is completely anonymous. The answers are recorded through the form, which are then displayed as separate stories. We do not collect any of your data, we have no interest in it, and this platform is a communal property.
+                    <br> <br>If you would like to remove your story, request it through this form, indicating which story is yours (you can find your story within the feed and copy paste it in the email). This form is also completely anonymous, the only input we get is the email body. You do not need to enter a name or an email address.
+                    <br> <br>Hopefully this project will play a tiny part in a big change, and will not be a stagnating swamp of blood boiling experiences (but that is also fine). May we unite in our struggle against the MAN, and may we refuse what’s not ours to carry. Let’s not accept a life we don’t deserve.<br> <br>
+                </div>
+                </div>
+                <form id="answerForm">
+                    <textarea id="answer" name="answer" rows="4" cols="50"></textarea><br><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </div>
 
         <div class="answers-container">
-            <h2 class="answers-header">All Answers</h2>
+            <h2 class="answers-header">Submissions</h2>
             <div id="answersList"></div>
         </div>
     </div>
@@ -148,7 +198,7 @@
             });
             document.getElementById('answer').value = '';
         });
-    
+
         function loadAnswers() {
             fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
                 .then(response => response.json())
@@ -164,7 +214,7 @@
                     updateAnswerHeight(); // Update the height of #answer after loading answers
                 });
         }
-    
+
         function updateAnswerHeight() {
             var answerBoxes = document.querySelectorAll('.answer-box');
             var maxHeight = 0;
@@ -174,11 +224,13 @@
                 }
             });
             document.getElementById('answer').style.height = maxHeight + 'px';
+            document.getElementById('description').style.height = maxHeight + 'px';
         }
-    
+
         window.addEventListener('resize', updateAnswerHeight); // Adjust height on window resize
         loadAnswers(); // Initial load
+
+        
     </script>
-    
 </body>
 </html>
