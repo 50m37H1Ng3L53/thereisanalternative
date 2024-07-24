@@ -163,7 +163,7 @@
                     <br> <br> We use EmailJS ???
                 </div>
                 </div>
-                <form id="answerForm">
+                <form id="answerForm" onsubmit="sendMail(event)">
                     <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
                     <button type="submit">Submit</button>
                 </form>
@@ -189,7 +189,9 @@
 </script>
     
     <script>
-    function sendMail() {
+    function sendMail(event) {
+  event.preventDefault(); // Prevent the default form submission
+
   var params = {
     message: document.getElementById("message").value,
   };
@@ -197,16 +199,18 @@
   const serviceID = "service_hux72yb";
   const templateID = "Ytemplate_t3lrwqg";
 
-    emailjs.send(serviceID, templateID, params)
-    .then(res=>{
-        document.getElementById("message").value = "";
-        console.log(res);
-        alert("Your message sent successfully!!")
-
-    })
-    .catch(err=>console.log(err));
-
+  emailjs.send(serviceID, templateID, params)
+  .then(res=>{
+      document.getElementById("message").value = "";
+      console.log(res);
+      alert("Your message sent successfully!!")
+  })
+  .catch(err=>{
+      console.log(err);
+      alert("Failed to send your message. Please try again.")
+  });
 }
+
 
         function loadAnswers() {
             fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
