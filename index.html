@@ -193,7 +193,8 @@
                 })
             }).then(response => {
                 if (response.ok) {
-                    loadAnswers();
+                    console.log("Your story has been submitted successfully!");
+                loadAnswers();
                 }
             });
             document.getElementById('answer').value = '';
