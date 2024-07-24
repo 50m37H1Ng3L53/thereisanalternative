@@ -225,7 +225,7 @@
                 });
         }
 
-        function updateAnswerHeight() {
+        function updateMessageHeight() {
             var answerBoxes = document.querySelectorAll('.answer-box');
             var maxHeight = 0;
             answerBoxes.forEach(function(box) {
@@ -233,11 +233,11 @@
                     maxHeight = box.offsetHeight;
                 }
             });
-            document.getElementById('answer').style.height = maxHeight + 'px';
+            document.getElementById('message').style.height = maxHeight + 'px';
             document.getElementById('description').style.height = maxHeight + 'px';
         }
 
-        window.addEventListener('resize', updateAnswerHeight); // Adjust height on window resize
+        window.addEventListener('resize', updateMessageHeight); // Adjust height on window resize
         loadAnswers(); // Initial load
 
         
