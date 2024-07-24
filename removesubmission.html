@@ -188,13 +188,19 @@
 
             // Get the form data
             var message = document.getElementById('answer').value;
+            console.log('Message to be sent:', message); // Log the message
+
 
             // Send the email
             emailjs.send("service_hux72yb", "template_t3lrwqg", {
                 message: message
             }).then(function(response) {
+                console.log('Email sent successfully:', response); // Log success
+
                 alert("Message sent successfully!");
             }, function(error) {
+                console.error('Failed to send email:', error); // Log error
+
                 alert("Failed to send message. Please try again.");
             });
         });
