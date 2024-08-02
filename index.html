@@ -4,186 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>There is an alternative</title>
-   <style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-    }
-
-    h2 {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 24px;
-        font-weight: 600;
-    }
-
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        margin: 20px auto;
-        box-sizing: border-box;
-    }
-
-    .form-container, .answers-container {
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    .form-container {
-        flex-basis: 30%;
-        position: relative;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .answers-container {
-        flex-basis: 70%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #answersList, #content {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        max-width: 100%;
-        justify-content: center;
-    }
-
-    .answer-box {
-        background-color: white;
-        padding: 10px;
-        margin: 5px;
-        border: 1px dashed black;
-        border-radius: 10px;
-        height: 300px;
-        flex: 1 1 calc(33% - 30px);
-        overflow: auto;
-        box-sizing: border-box;
-    }
-
-    #description, #answer {
-        border: 1px dashed black;
-        border-radius: 10px;
-        padding: 10px;
-        margin: 5px;
-        box-sizing: border-box;
-        overflow: auto;
-        flex: auto;
-        
-    }
-
-    #answer {
-        background-color: green;
-        font-size: 16px;
-        
-    }
-
-    #description {
-        background-color: white;
-    }
-
-    #descriptionForm, #answerForm {
-        width: fit-content;
-    }
-
-
-    /* Media Queries for Responsiveness */
-    @media (min-width: 1025px) {
-        .form-container {
-            border-right: 1px dashed black;
-            
-           
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
         }
-        #answer, #description {
-            height: 300px;
-            
-            width: calc(100% - 10px);
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            font-weight: 600;
         }
-
-      
-   
-    }
-
-    @media (max-width: 1024px) {
-        .form-container, .answers-container {
-            flex-basis: 100%;
-        }
-        .answer-box {
-            flex: 1 1 calc(50% - 20px);
-        }
-        #answerForm, #descriptionForm {
+        .container {
+            display: flex;
+            flex-wrap: wrap;
             width: 100%;
-            flex: 1 1 calc(50% - 20px);
-        }
-
-        #answer {
+            margin: 20px auto;
             box-sizing: border-box;
-            width: calc(100% - 10px)
-            
         }
-        
-    }
-
-    @media (max-width: 768px) {
         .form-container, .answers-container {
-            flex-basis: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .form-container {
+            flex-basis: 30%;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+        }
+        .answers-container {
+            flex-basis: 70%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #answersList, #content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 100%;
+            justify-content: center;
         }
         .answer-box {
-            flex: 1 1 calc(100% - 20px);
+            background-color: white;
+            padding: 10px;
+            margin: 5px;
+            border: 1px dashed black;
+            border-radius: 10px;
+            height: 250px;
+            flex: 1 1 calc(33% - 30px);
+            overflow: auto;
+            box-sizing: border-box;
         }
-        #answerForm, #descriptionForm {
-            width: auto;
-            flex: 1 1 calc(100% - 20px);
+        #description, #answer {
+            border: 1px dashed black;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 5px;
+            box-sizing: border-box;
+            overflow: auto;
+            flex: auto; 
         }
-   
-    }
-
-    @media (max-width: 480px) {
-        .form-container, .answers-container {
-            flex-basis: 100%;
+        #answer {
+            background-color: green;
+            font-size: 16px;
         }
-        .answer-box {
-            flex: 1 1 calc(100% - 10px);
+        #description {
+            background-color: white;
         }
-
-        #answerForm, #descriptionForm {
-            width: auto;
-            flex: 1 1 calc(100% - 10px);
+        #descriptionForm, #answerForm {
+            width: fit-content;
         }
-
-     
-    }
-</style>
-
+    /* Media Queries for Responsiveness */
+        @media (min-width: 1025px) {
+            .form-container {
+                border-right: 1px dashed black; 
+            }
+            #content {
+                position: sticky;
+                top: 100px;
+            }
+            #content-header {
+                position: sticky;
+                top: 54px;
+            }
+            #answer, #description {
+                width: calc(100% - 10px);
+            }
+        }
+        @media (max-width: 1024px) {
+            .form-container, .answers-container {
+                flex-basis: 100%;
+            }
+            .answer-box {
+                flex: 1 1 calc(50% - 20px);
+            }
+            #answerForm, #descriptionForm {
+                width: 100%;
+                flex: 1 1 calc(50% - 20px);
+            }
+            #answer {
+                box-sizing: border-box;
+                width: calc(100% - 10px)
+            }
+        }
+        @media (max-width: 768px) {
+            .form-container, .answers-container {
+                flex-basis: 100%;
+            }
+            .answer-box {
+                flex: 1 1 calc(100% - 20px);
+            }
+            #answerForm, #descriptionForm {
+                width: auto;
+                flex: 1 1 calc(100% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .form-container, .answers-container {
+                flex-basis: 100%;
+            }
+            .answer-box {
+                flex: 1 1 calc(100% - 10px);
+            }
+            #answerForm, #descriptionForm {
+                width: auto;
+                flex: 1 1 calc(100% - 10px);
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">  
         <div class="form-container">
-            <h2 style="color: green;" id="content-header">There is an alternative</h2>
+            <h2 style="color: green; margin-left: 5px;" id="content-header">There is an alternative</h2>
             <div id="content">
-                <div id="descriptionForm"><div id="description">
-                    There is an alternative is a digital safe space for people to express their frustration with the current state of the world and the economy we live in through stories from their workplace. Be it a server job at a restaurant, corporate (junior) position, office clerk, artist, factory worker - a lot of us have stories that reflect outdated corporate structures, bad internal communication, nonsense hierarchies, crazy bosses, managers, coworkers, clients, customers, etcetera. How do these experiences reflect on our daily lives, decisions, experience, health?
-                    <br> <br>The idea started from own experience and those shared by friends, mostly working in HORECA (Hotels, Restaurants, Cafes). It was born from desire, driven by frustration, aiming to start a dialogue, and, hopefully, enforce some long overdue changes. As opposed to Thatcher’s gaslighting TINA (There is no alternative), claiming that there is no other viable system than capitalism, TIA offers a space that encourages alternatives and doesn’t dismiss them as naive or foolish. To think of an alternative that benefits most (decent life above poverty line) as naive - isn’t it an act performed by those who don’t benefit from these changes? Or those who can’t afford to even begin to believe life can get better? How does one drop their privilege if it benefits their living standard? How does one question the system that holds its foot on their neck? To think that the necessary societal changes that directly affect our ways of living are naïve, dismiss them as impossible, and carry on living in current reality, is just another act of participation in the capitalist charades.
-                    <br> <br>Please, feel free to vent, and to share your story in this form. Feel free to be hopeful for a minute. Share what happened, share what you think, share what could be different. You answer is completely anonymous. The answers are recorded through the form, which are then displayed as separate stories. We do not collect any of your data, we have no interest in it, and this platform is a communal property.
-                    <br> <br>If you would like to remove your story, request it through a form on <a href="removesubmission.html" style="color: red">this page</a>, indicating which story is yours (you can find your story within the feed and copy paste it in the email). This form is also completely anonymous, the only input we get is the email body. You do not need to enter a name or an email address.
-                    
-                </div>
+                <div id="descriptionForm">
+                    <div id="description">
+                        There is an alternative is a digital safe space 
+                        for people to express their frustration with the 
+                        current state of the world and the economy we live
+                        in through stories from their workplace. Be it a 
+                        server job at a restaurant, corporate (junior) 
+                        position, office clerk, artist, factory worker 
+                        - a lot of us have stories that reflect outdated 
+                        corporate structures, bad internal communication, 
+                        nonsense hierarchies, crazy bosses, managers, coworkers, 
+                        clients, customers, etcetera. How do these experiences 
+                        reflect on our daily lives, decisions, experience, health?
+                        <br><br>The idea started from own experience and those 
+                        shared by friends, mostly working in HORECA (Hotels, Restaurants, Cafes). 
+                        It was born from desire, driven by frustration, aiming to start 
+                        a dialogue, and, hopefully, enforce some long overdue changes. 
+                        As opposed to Thatcher’s gaslighting TINA (There is no alternative), 
+                        claiming that there is no other viable system than capitalism, 
+                        TIA offers a space that encourages alternatives and doesn’t 
+                        dismiss them as naive or foolish. To think of an alternative 
+                        that benefits most (decent life above poverty line) as naive 
+                        - isn’t it an act performed by those who don’t benefit 
+                        from these changes? Or those who can’t afford to even 
+                        begin to believe life can get better? How does one 
+                        drop their privilege if it benefits their living standard? 
+                        How does one question the system that holds its foot on their neck? 
+                        To think that the necessary societal changes that 
+                        directly affect our ways of living are naïve, 
+                        dismiss them as impossible, and carry on living 
+                        in current reality, is just another act of 
+                        participation in the capitalist charades.
+                        <br><br>Please, feel free to vent, and to 
+                        share your story in this form. Feel free to 
+                        be hopeful for a minute. Share what happened, 
+                        share what you think, share what could be different. 
+                        You answer is completely anonymous. The answers 
+                        are recorded through the form, which are then 
+                        displayed as separate stories. We do not collect 
+                        any of your data, we have no interest in it, 
+                        and this platform is a communal property.
+                        <br><br>If you would like to remove your story, 
+                        request it through a form on 
+                        <a href="removesubmission.html" style="color: red">this page</a>, 
+                        indicating which story is yours (you can find your story within 
+                        the feed and copy paste it in the email). This form is also 
+                        completely anonymous, the only input we get is the email body. 
+                        You do not need to enter a name or an email address.     
+                    </div>
                 </div>
                 <form id="answerForm">
-                    <textarea id="answer" name="answer" rows="4" cols="50"></textarea><br><br>
-                    <button type="submit">Submit</button>
+                    <textarea id="answer" name="answer" rows="4" cols="50"></textarea>
+                    <button type="submit" style="margin-left: 5px;">Submit</button>
                 </form>
             </div>
         </div>
-
         <div class="answers-container">
             <h2 class="answers-header">Submissions</h2>
             <div id="answersList"></div>
         </div>
     </div>
-
     <script>
         document.getElementById('answerForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -196,16 +211,16 @@
                 body: new URLSearchParams({
                     'answer': answer
                 })
-            }).then(response => {
+            })
+            .then(response => {
                 if (response.ok) {
                     console.log(response);
-      alert("Your story submitted successfully!!")
-                loadAnswers();
+                    alert("Your story submitted successfully!!")
+                    loadAnswers();
                 }
             });
             document.getElementById('answer').value = '';
         });
-
         function loadAnswers() {
             fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
                 .then(response => response.json())
@@ -221,7 +236,6 @@
                     updateAnswerHeight(); // Update the height of #answer after loading answers
                 });
         }
-
         function updateAnswerHeight() {
             var answerBoxes = document.querySelectorAll('.answer-box');
             var maxHeight = 0;
@@ -233,11 +247,8 @@
             document.getElementById('answer').style.height = maxHeight + 'px';
             document.getElementById('description').style.height = maxHeight + 'px';
         }
-
         window.addEventListener('resize', updateAnswerHeight); // Adjust height on window resize
         loadAnswers(); // Initial load
-
-        
     </script>
 </body>
 </html>

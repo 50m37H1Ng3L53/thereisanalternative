@@ -4,214 +4,196 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request to remove your submission</title>
-   <style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-    }
-
-    h2 {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 24px;
-        font-weight: 600;
-    }
-
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        margin: 20px auto;
-        box-sizing: border-box;
-    }
-
-    .form-container, .answers-container {
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    .form-container {
-        flex-basis: 30%;
-        position: relative;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .answers-container {
-        flex-basis: 70%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #answersList, #content {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        max-width: 100%;
-        justify-content: center;
-    }
-
-    .answer-box {
-        background-color: white;
-        padding: 10px;
-        margin: 5px;
-        border: 1px dashed black;
-        border-radius: 10px;
-        height: 300px;
-        flex: 1 1 calc(33% - 30px);
-        overflow: auto;
-        box-sizing: border-box;
-    }
-
-    #description, #message {
-        border: 1px dashed black;
-        border-radius: 10px;
-        padding: 10px;
-        margin: 5px;
-        box-sizing: border-box;
-        overflow: auto;
-        flex: auto;
-        
-    }
-
-    #message {
-        background-color: red;
-        font-size: 16px;
-        
-    }
-
-    #description {
-        background-color: white;
-    }
-
-    #descriptionForm, #answerForm {
-        width: fit-content;
-    }
-
-
-    /* Media Queries for Responsiveness */
-    @media (min-width: 1025px) {
-        .form-container {
-            border-right: 1px dashed black;
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
         }
-        #message, #description {
-            height: 300px;
-            
-            width: calc(100% - 10px);
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            font-weight: 600;
         }
-    }
-
-    @media (max-width: 1024px) {
-        .form-container, .answers-container {
-            flex-basis: 100%;
-        }
-        .answer-box {
-            flex: 1 1 calc(50% - 20px);
-        }
-        #answerForm, #descriptionForm {
+        .container {
+            display: flex;
+            flex-wrap: wrap;
             width: 100%;
-            flex: 1 1 calc(50% - 20px);
-        }
-
-        #message {
+            margin: 20px auto;
             box-sizing: border-box;
-            width: calc(100% - 10px)
-            
         }
-        
-    }
-
-    @media (max-width: 768px) {
         .form-container, .answers-container {
-            flex-basis: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .form-container {
+            flex-basis: 30%;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+        }
+        .answers-container {
+            flex-basis: 70%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #answersList, #content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 100%;
+            justify-content: center;
         }
         .answer-box {
-            flex: 1 1 calc(100% - 20px);
+            background-color: white;
+            padding: 10px;
+            margin: 5px;
+            border: 1px dashed black;
+            border-radius: 10px;
+            height: 250px;
+            flex: 1 1 calc(33% - 30px);
+            overflow: auto;
+            box-sizing: border-box;
         }
-        #answerForm, #descriptionForm {
-            width: auto;
-            flex: 1 1 calc(100% - 20px);
+        #description, #message {
+            border: 1px dashed black;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 5px;
+            box-sizing: border-box;
+            overflow: auto;
+            flex: auto;
         }
-   
-    }
-
-    @media (max-width: 480px) {
-        .form-container, .answers-container {
-            flex-basis: 100%;
+        #message {
+            background-color: red;
+            font-size: 16px;
         }
-        .answer-box {
-            flex: 1 1 calc(100% - 10px);
+        #description {
+            background-color: white;
         }
-
-        #answerForm, #descriptionForm {
-            width: auto;
-            flex: 1 1 calc(100% - 10px);
+        #descriptionForm, #answerForm {
+            width: fit-content;
         }
-
-     
-    }
-</style>
-
+    /* Media Queries for Responsiveness */
+        @media (min-width: 1025px) {
+            .form-container {
+                border-right: 1px dashed black;
+            }
+            #content {
+                position: sticky;
+                top: 100px;
+            }
+            #content-header {
+                position: sticky;
+                top: 54px;
+            }
+            #message, #description {
+                width: calc(100% - 10px);
+            }
+        }
+        @media (max-width: 1024px) {
+            .form-container, .answers-container {
+                flex-basis: 100%;
+            }
+            .answer-box {
+                flex: 1 1 calc(50% - 20px);
+            }
+            #answerForm, #descriptionForm {
+                width: 100%;
+                flex: 1 1 calc(50% - 20px);
+            }
+            #message {
+                box-sizing: border-box;
+                width: calc(100% - 10px)
+            }
+        }
+        @media (max-width: 768px) {
+            .form-container, .answers-container {
+                flex-basis: 100%;
+            }
+            .answer-box {
+                flex: 1 1 calc(100% - 20px);
+            }
+            #answerForm, #descriptionForm {
+                width: auto;
+                flex: 1 1 calc(100% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .form-container, .answers-container {
+                flex-basis: 100%;
+            }
+            .answer-box {
+                flex: 1 1 calc(100% - 10px);
+            }
+            #answerForm, #descriptionForm {
+                width: auto;
+                flex: 1 1 calc(100% - 10px);
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">  
         <div class="form-container">
-            <h2 style="color: red;" id="content-header">Remove submission</h2>
+            <h2 style="color: red; margin-left: 5px;" id="content-header">Remove submission</h2>
             <div id="content">
-                <div id="descriptionForm"><div id="description">
-                    On this page you can request to remove your submission through this form. Just paste the text of your answer into this form and hit the "Submit" button. On the right (or below on smaller screens) you can browse submissions to find yours. This form is completely anonymous as well, we just get the body of the email in the inbox, none of your personal data is collected - we do not have any interest in it.
-                    <br> <br> <a href="index.html" style="color: green;">Click here</a> to get back to the main page.
-                </div>
+                <div id="descriptionForm">
+                    <div id="description">
+                        On this page you can request to remove your 
+                        submission through this form. Just paste the 
+                        text of your answer into this form and send. 
+                        On the right (or below on smaller screens) 
+                        you can browse submissions to find yours. 
+                        This form is completely anonymous as well, 
+                        we just get the body of the email in the inbox, 
+                        none of your personal data is collected
+                        - we do not have any interest in it.
+                        <br><br>
+                        <a href="index.html" style="color: green;">Click here</a> 
+                        to get back to the main page.
+                    </div>
                 </div>
                 <form id="answerForm" onsubmit="sendMail(event)">
-                    <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
-                    <button type="submit">Submit</button>
+                    <textarea id="message" name="message" rows="4" cols="50"></textarea>
+                    <button type="submit" style="margin-left: 5px;">Submit</button>
                 </form>
             </div>
         </div>
-
         <div class="answers-container">
             <h2 class="answers-header">Submissions</h2>
             <div id="answersList"></div>
         </div>
     </div>
-  
-
     <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-(function(){
-  emailjs.init({
-    publicKey: "tY2mUJH68DgK2ENJG",
-  });
-})();
-</script>
-    
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "tY2mUJH68DgK2ENJG",
+            });
+        })();
+    </script>
     <script>
-    function sendMail(event) {
-  event.preventDefault(); // Prevent the default form submission
-
-  var params = {
-    message: document.getElementById("message").value,
-  };
-
-  const serviceID = "service_hux72yb";
-  const templateID = "template_t3lrwqg";
-
-  emailjs.send(serviceID, templateID, params)
-  .then(res=>{
-      document.getElementById("message").value = "";
-      console.log(res);
-      alert("Your message sent successfully!!")
-  })
-  .catch(err=>{
-      console.log(err);
-      alert("Failed to send your message. Please try again.")
-  });
-}
-
-
+        function sendMail(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var params = {
+                message: document.getElementById("message").value,
+            };
+        const serviceID = "service_hux72yb";
+        const templateID = "template_t3lrwqg";
+        emailjs.send(serviceID, templateID, params)
+            .then(res=>{
+                document.getElementById("message").value = "";
+                console.log(res);
+                alert("Your message sent successfully!!")
+            })
+            .catch(err=>{
+                console.log(err);
+                alert("Failed to send your message. Please try again.")
+            });
+        }
         function loadAnswers() {
             fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
                 .then(response => response.json())
@@ -227,7 +209,6 @@
                     updateMessageHeight(); // Update the height of #answer after loading answers
                 });
         }
-
         function updateMessageHeight() {
             var answerBoxes = document.querySelectorAll('.answer-box');
             var maxHeight = 0;
@@ -239,11 +220,8 @@
             document.getElementById('message').style.height = maxHeight + 'px';
             document.getElementById('description').style.height = maxHeight + 'px';
         }
-
         window.addEventListener('resize', updateMessageHeight); // Adjust height on window resize
         loadAnswers(); // Initial load
-
-        
     </script>
 </body>
 </html>
