@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content=""> 
-    <meta name="keywords" content=""> 
+    <meta name="description" content="There is an alternative is a space to express your frustration with the state of the world, capitalism, and the economy via stories from your workplace."> 
+    <meta name="keywords" content="there is no alternative, TINA, there is an alternative, TIA, TIAA, TI2A, digital safe space, capitalism, poverty, unemployment, express frustration, current state of the world, economy, workplace stories, corporate structures, internal communication, hierarchies, bosses, managers, coworkers, clients, customers, daily lives, decisions, experience, health, HORECA (Hotels, Restaurants, Cafes), dialogue, enforce changes, alternatives to capitalism, naive, foolish, privilege, societal changes, capitalist charades, vent, share story, anonymity, data collection, communal property, remove story, request form, anonymous input, Server job, restaurant, corporate junior position, office clerk, artist, factory worker, crazy bosses, fear, Mark Fisher, “Capitalist Realism: Is There No Alternative?”, Google sheet, stagnating swamp, blood boiling experiences"> 
     <title>There is an alternative</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
@@ -17,37 +17,37 @@
             font-size: 24px;
             font-weight: 600;
         }
-        .container {
+        .two-column-box {
             display: flex;
             flex-wrap: wrap;
             width: 100%;
             margin: 20px auto;
             box-sizing: border-box;
         }
-        .form-container, .answers-container {
+        .forms-column, .submissions-column {
             padding: 20px;
             box-sizing: border-box;
         }
-        .form-container {
+        .forms-column {
             flex-basis: 30%;
             position: relative;
             flex-direction: column;
             align-items: center;
         }
-        .answers-container {
+        .submissions-column {
             flex-basis: 70%;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        #answersList, #content {
+        #submissions, #forms {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             max-width: 100%;
             justify-content: center;
         }
-        .answer-box {
+        .submission {
             background-color: white;
             padding: 10px;
             margin: 5px;
@@ -58,7 +58,7 @@
             overflow: auto;
             box-sizing: border-box;
         }
-        #description, #answer {
+        #about, #submit {
             border: 1px dashed black;
             border-radius: 10px;
             padding: 10px;
@@ -67,87 +67,83 @@
             overflow: auto;
             flex: auto; 
         }
-        #answer {
+        #submit {
             background-color: green;
             font-size: 16px;
         }
-        #description {
+        #about {
             background-color: white;
         }
-        #descriptionForm, #answerForm {
-            width: fit-content;
-        }
-    /* Media Queries for Responsiveness */
         @media (min-width: 1025px) {
-            .form-container {
+            .forms-column {
                 border-right: 1px dashed black; 
             }
-            #content {
-                position: sticky;
+            #forms {
+                position: sticky; 
                 top: 100px;
             }
-            #content-header {
+            #forms-header {
                 position: sticky;
                 top: 54px;
             }
-            #answer, #description {
+            #submit, #about {
                 width: calc(100% - 10px);
             }
         }
         @media (max-width: 1024px) {
-            .form-container, .answers-container {
+            .forms-column, .submissions-column {
                 flex-basis: 100%;
             }
-            .answer-box {
+            .submission {
                 flex: 1 1 calc(50% - 20px);
             }
-            #answerForm, #descriptionForm {
+            #submitForm, #aboutForm {
                 width: 100%;
                 flex: 1 1 calc(50% - 20px);
             }
-            #answer {
+            #submit {
                 box-sizing: border-box;
                 width: calc(100% - 10px)
             }
         }
         @media (max-width: 768px) {
-            .form-container, .answers-container {
+            .forms-column, .submissions-column {
                 flex-basis: 100%;
             }
-            .answer-box {
+            .submission {
                 flex: 1 1 calc(100% - 20px);
             }
-            #answerForm, #descriptionForm {
+            #submitForm, #aboutForm {
                 width: auto;
                 flex: 1 1 calc(100% - 20px);
             }
         }
         @media (max-width: 480px) {
-            .form-container, .answers-container {
+            .forms-column, .submissions-column {
                 flex-basis: 100%;
             }
-            .answer-box {
+            .submission {
                 flex: 1 1 calc(100% - 10px);
             }
-            #answerForm, #descriptionForm {
+            #submitForm, #aboutForm {
                 width: auto;
                 flex: 1 1 calc(100% - 10px);
             }
         }
         @media (min-width: 2000px) {
-            #answerForm, #descriptionForm {
+            #submitForm, #aboutForm {
                 min-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">  
-        <div class="form-container">
-            <h2 style="color: green; margin-left: 5px;" id="content-header">There is an alternative</h2>
-            <div id="content">
-                <div id="descriptionForm">
-                    <div id="description">
+    <div class="two-column-box">  
+        <div class="forms-column">
+            <h2 style="color: green; margin-left: 5px;" id="forms-header">There is an alternative</h2>
+            <div id="forms">
+                <div id="aboutForm">
+                    <div id="about">
                         There is an alternative is a digital safe space 
                         for people to express their frustration with the 
                         current state of the world and the economy we live
@@ -196,28 +192,28 @@
                         You do not need to enter a name or an email address.     
                     </div>
                 </div>
-                <form id="answerForm">
-                    <textarea id="answer" name="answer" rows="4" cols="50"></textarea>
+                <form id="submitForm">
+                    <textarea id="submit" name="submit" rows="4" cols="50"></textarea>
                     <button type="submit" style="margin-left: 5px;">Submit</button>
                 </form>
             </div>
         </div>
-        <div class="answers-container">
-            <h2 class="answers-header">Submissions</h2>
-            <div id="answersList"></div>
+        <div class="submissions-column">
+            <h2>Submissions</h2>
+            <div id="submissions"></div>
         </div>
     </div>
     <script>
-        document.getElementById('answerForm').addEventListener('submit', function(e) {
+        document.getElementById('submitForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            var answer = document.getElementById('answer').value;
+            var submit = document.getElementById('submit').value;
             fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: new URLSearchParams({
-                    'answer': answer
+                    'submit': submit
                 })
             })
             .then(response => {
@@ -227,35 +223,35 @@
                     loadAnswers();
                 }
             });
-            document.getElementById('answer').value = '';
+            document.getElementById('submit').value = '';
         });
         function loadAnswers() {
             fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
                 .then(response => response.json())
                 .then(data => {
-                    var answersList = document.getElementById('answersList');
-                    answersList.innerHTML = '';
-                    data.reverse().forEach(function(answer) {
-                        var answerBox = document.createElement('div');
-                        answerBox.className = 'answer-box';
-                        answerBox.textContent = answer;
-                        answersList.appendChild(answerBox);
+                    var submissions = document.getElementById('submissions');
+                    submissions.innerHTML = '';
+                    data.reverse().forEach(function(submit) {
+                        var submitBox = document.createElement('div');
+                        submitBox.className = 'submission';
+                        submitBox.textContent = submit;
+                        submissions.appendChild(submitBox);
                     });
-                    updateAnswerHeight(); // Update the height of #answer after loading answers
+                    updatesubmitHeight(); // Update the height of #submit after loading submissions
                 });
         }
-        function updateAnswerHeight() {
-            var answerBoxes = document.querySelectorAll('.answer-box');
+        function updatesubmitHeight() {
+            var submitBoxes = document.querySelectorAll('.submission');
             var maxHeight = 0;
-            answerBoxes.forEach(function(box) {
+            submitBoxes.forEach(function(box) {
                 if (box.offsetHeight > maxHeight) {
                     maxHeight = box.offsetHeight;
                 }
             });
-            document.getElementById('answer').style.height = maxHeight + 'px';
-            document.getElementById('description').style.height = maxHeight + 'px';
+            document.getElementById('submit').style.height = maxHeight + 'px';
+            document.getElementById('about').style.height = maxHeight + 'px';
         }
-        window.addEventListener('resize', updateAnswerHeight); // Adjust height on window resize
+        window.addEventListener('resize', updatesubmitHeight); // Adjust height on window resize
         loadAnswers(); // Initial load
     </script>
 </body>

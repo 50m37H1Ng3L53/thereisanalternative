@@ -15,37 +15,37 @@
             font-size: 24px;
             font-weight: 600;
         }
-        .container {
+        .two-column-box {
             display: flex;
             flex-wrap: wrap;
             width: 100%;
             margin: 20px auto;
             box-sizing: border-box;
         }
-        .form-container, .answers-container {
+        .forms-column, .submissions-column {
             padding: 20px;
             box-sizing: border-box;
         }
-        .form-container {
+        .forms-column {
             flex-basis: 30%;
             position: relative;
             flex-direction: column;
             align-items: center;
         }
-        .answers-container {
+        .submissions-column {
             flex-basis: 70%;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        #answersList, #content {
+        #submissions, #forms {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             max-width: 100%;
             justify-content: center;
         }
-        .answer-box {
+        .submission {
             background-color: white;
             padding: 10px;
             margin: 5px;
@@ -56,7 +56,7 @@
             overflow: auto;
             box-sizing: border-box;
         }
-        #description, #message {
+        #about, #message {
             border: 1px dashed black;
             border-radius: 10px;
             padding: 10px;
@@ -69,37 +69,33 @@
             background-color: red;
             font-size: 16px;
         }
-        #description {
+        #about {
             background-color: white;
         }
-        #descriptionForm, #answerForm {
-            width: fit-content;
-        }
-    /* Media Queries for Responsiveness */
         @media (min-width: 1025px) {
-            .form-container {
+            .forms-column {
                 border-right: 1px dashed black;
             }
-            #content {
+            #forms {
                 position: sticky;
                 top: 100px;
             }
-            #content-header {
+            #forms-header {
                 position: sticky;
                 top: 54px;
             }
-            #message, #description {
+            #message, #about {
                 width: calc(100% - 10px);
             }
         }
         @media (max-width: 1024px) {
-            .form-container, .answers-container {
+            .forms-column, .submissions-column {
                 flex-basis: 100%;
             }
-            .answer-box {
+            .submission {
                 flex: 1 1 calc(50% - 20px);
             }
-            #answerForm, #descriptionForm {
+            #messageForm, #aboutForm {
                 width: 100%;
                 flex: 1 1 calc(50% - 20px);
             }
@@ -109,43 +105,43 @@
             }
         }
         @media (max-width: 768px) {
-            .form-container, .answers-container {
+            .forms-column, .submissions-column {
                 flex-basis: 100%;
             }
-            .answer-box {
+            .submission {
                 flex: 1 1 calc(100% - 20px);
             }
-            #answerForm, #descriptionForm {
+            #messageForm, #aboutForm {
                 width: auto;
                 flex: 1 1 calc(100% - 20px);
             }
         }
         @media (max-width: 480px) {
-            .form-container, .answers-container {
+            .forms-column, .submissions-column {
                 flex-basis: 100%;
             }
-            .answer-box {
+            .submission {
                 flex: 1 1 calc(100% - 10px);
             }
-            #answerForm, #descriptionForm {
+            #messageForm, #aboutForm {
                 width: auto;
                 flex: 1 1 calc(100% - 10px);
             }
         }
         @media (min-width: 2000px) {
-            #answerForm, #descriptionForm {
+            #messageForm, #aboutForm {
                 min-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">  
-        <div class="form-container">
-            <h2 style="color: red; margin-left: 5px;" id="content-header">Remove submission</h2>
-            <div id="content">
-                <div id="descriptionForm">
-                    <div id="description">
+    <div class="two-column-box">  
+        <div class="forms-column">
+            <h2 style="color: red; margin-left: 5px;" id="forms-header">Remove submission</h2>
+            <div id="forms">
+                <div id="aboutForm">
+                    <div id="about">
                         On this page you can request to remove your 
                         submission through this form. Just paste the 
                         text of your answer into this form and send. 
@@ -160,15 +156,15 @@
                         to get back to the main page.
                     </div>
                 </div>
-                <form id="answerForm" onsubmit="sendMail(event)">
+                <form id="messageForm" onsubmit="sendMail(event)">
                     <textarea id="message" name="message" rows="4" cols="50"></textarea>
                     <button type="submit" style="margin-left: 5px;">Submit</button>
                 </form>
             </div>
         </div>
-        <div class="answers-container">
-            <h2 class="answers-header">Submissions</h2>
-            <div id="answersList"></div>
+        <div class="submissions-column">
+            <h2>Submissions</h2>
+            <div id="submissions"></div>
         </div>
     </div>
     <script type="text/javascript"
@@ -204,27 +200,27 @@
             fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
                 .then(response => response.json())
                 .then(data => {
-                    var answersList = document.getElementById('answersList');
-                    answersList.innerHTML = '';
-                    data.reverse().forEach(function(answer) {
-                        var answerBox = document.createElement('div');
-                        answerBox.className = 'answer-box';
-                        answerBox.textContent = answer;
-                        answersList.appendChild(answerBox);
+                    var submissions = document.getElementById('submissions');
+                    submissions.innerHTML = '';
+                    data.reverse().forEach(function(submit) {
+                        var submitBox = document.createElement('div');
+                        submitBox.className = 'submission';
+                        submitBox.textContent = submit;
+                        submissions.appendChild(submitBox);
                     });
-                    updateMessageHeight(); // Update the height of #answer after loading answers
+                    updateMessageHeight(); // Update the height of #submit after loading submissions
                 });
         }
         function updateMessageHeight() {
-            var answerBoxes = document.querySelectorAll('.answer-box');
+            var submitBoxes = document.querySelectorAll('.submission');
             var maxHeight = 0;
-            answerBoxes.forEach(function(box) {
+            submitBoxes.forEach(function(box) {
                 if (box.offsetHeight > maxHeight) {
                     maxHeight = box.offsetHeight;
                 }
             });
             document.getElementById('message').style.height = maxHeight + 'px';
-            document.getElementById('description').style.height = maxHeight + 'px';
+            document.getElementById('about').style.height = maxHeight + 'px';
         }
         window.addEventListener('resize', updateMessageHeight); // Adjust height on window resize
         loadAnswers(); // Initial load
