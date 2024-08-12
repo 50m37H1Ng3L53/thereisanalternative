@@ -28,9 +28,6 @@
             padding: 20px;
             box-sizing: border-box;
         }
-        #submissions {
-    display: none; /* Initially hidden */
-}
         .forms-column {
             flex-basis: 30%;
             position: relative;
@@ -232,31 +229,20 @@
             document.getElementById('submit').value = '';
         });
         function loadAnswers() {
-    fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
-        .then(response => response.json())
-        .then(data => {
-            var submissions = document.getElementById('submissions');
-            submissions.innerHTML = ''; // Clear the submissions container
-            
-            if (data.length === 0) {
-                submissions.style.display = 'none'; // Hide the submissions container if empty
-            } else {
-                submissions.style.display = 'flex'; // Show the submissions container if there are submissions
-                data.reverse().forEach(function(submit) {
-                    var submitBox = document.createElement('div');
-                    submitBox.className = 'submission';
-                    submitBox.textContent = submit;
-                    submissions.appendChild(submitBox);
+            fetch('')
+                .then(response => response.json())
+                .then(data => {
+                    var submissions = document.getElementById('submissions');
+                    submissions.innerHTML = '';
+                    data.reverse().forEach(function(submit) {
+                        var submitBox = document.createElement('div');
+                        submitBox.className = 'submission';
+                        submitBox.textContent = submit;
+                        submissions.appendChild(submitBox);
+                    });
+                    updatesubmitHeight(); // Update the height of #submit after loading submissions
                 });
-                updatesubmitHeight(); // Update the height of #submit after loading submissions
-            }
-        })
-        .catch(error => {
-            console.error('Error loading submissions:', error);
-        });
-}
-
-
+        }
         function updatesubmitHeight() {
             var submitBoxes = document.querySelectorAll('.submission');
             var maxHeight = 0;
