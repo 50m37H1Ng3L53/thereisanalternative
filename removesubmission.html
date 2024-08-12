@@ -197,20 +197,29 @@
             });
         }
         function loadAnswers() {
-            fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
-                .then(response => response.json())
-                .then(data => {
-                    var submissions = document.getElementById('submissions');
-                    submissions.innerHTML = '';
-                    data.reverse().forEach(function(submit) {
-                        var submitBox = document.createElement('div');
-                        submitBox.className = 'submission';
-                        submitBox.textContent = submit;
-                        submissions.appendChild(submitBox);
-                    });
-                    updateMessageHeight(); // Update the height of #submit after loading submissions
+    fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
+        .then(response => response.json())
+        .then(data => {
+            var submissions = document.getElementById('submissions');
+            submissions.innerHTML = ''; // Clear the submissions container
+            
+            if (data.length === 0) {
+                submissions.style.display = 'none'; // Hide the submissions container if empty
+                // Alternatively, you could display a message like this:
+                // submissions.innerHTML = '<p>No submissions yet. Be the first to share your story!</p>';
+            } else {
+                submissions.style.display = 'flex'; // Ensure the container is visible if there are submissions
+                data.reverse().forEach(function(submit) {
+                    var submitBox = document.createElement('div');
+                    submitBox.className = 'submission';
+                    submitBox.textContent = submit;
+                    submissions.appendChild(submitBox);
                 });
-        }
+                updatesubmitHeight(); // Update the height of #submit after loading submissions
+            }
+        });
+}
+
         function updateMessageHeight() {
             var submitBoxes = document.querySelectorAll('.submission');
             var maxHeight = 0;
