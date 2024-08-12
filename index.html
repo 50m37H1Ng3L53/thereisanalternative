@@ -208,28 +208,34 @@
     </div>
     <script>
         document.getElementById('submitForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var submit = document.getElementById('submit').value;
-            fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    'submit': submit
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log(response);
-                    alert("Your story submitted successfully!!")
-                    loadAnswers();
-                }
-            });
-            document.getElementById('submit').value = '';
-        });
+    e.preventDefault();
+    var submit = document.getElementById('submit').value;
+    fetch('https://script.google.com/macros/s/AKfycbwcGxsJeUpcxww44LZNpecmDiI1_rOTVms9oJ83X2f6QyGDKbUdAdLZlibSGMS8ql9IWQ/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+            'answer': submit
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log(response);
+            alert("Your story submitted successfully!!");
+            loadAnswers();
+        } else {
+            console.error('Error:', response.statusText);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+    document.getElementById('submit').value = '';
+});
+
         function loadAnswers() {
-            fetch('https://script.google.com/macros/s/AKfycbyc_2r7KyJwqdGtPe8e0OYrNYihJuwCEEjEqzAg_-e6cNxqap79i-Qx1b3q995_gfo3kw/exec?mode=get')
+            fetch('https://script.google.com/macros/s/AKfycbwcGxsJeUpcxww44LZNpecmDiI1_rOTVms9oJ83X2f6QyGDKbUdAdLZlibSGMS8ql9IWQ/exec?mode=get')
                 .then(response => response.json())
                 .then(data => {
                     var submissions = document.getElementById('submissions');
